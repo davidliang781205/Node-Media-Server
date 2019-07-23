@@ -175,11 +175,16 @@ class NodeRelayServer {
   onDonePublish(id, streamPath, args) {
     let session = this.dynamicSessions.get(id);
     if (session) {
+      console.log("onDonePublish")
+      console.log(session)
       session.end();
     }
 
     for (session of this.staticSessions.values()) {
       if (session.streamPath === streamPath) {
+        console.log("onDonePublish streamPath")
+        console.log(streamPath)
+
         session.end();
       }
     }
